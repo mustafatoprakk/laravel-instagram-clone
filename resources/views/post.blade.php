@@ -17,6 +17,9 @@
                 <form action="{{ route('create-post') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
+                        <input type="hidden" class="form-control fs-5" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
+                    </div>
+                    <div class="mb-3">
                         <input type="text" class="form-control fs-5" name="user_name" id="user_name" placeholder="username" value="{{ Auth::user()->name }}" disabled>
                     </div>
                     <div class="mb-3">

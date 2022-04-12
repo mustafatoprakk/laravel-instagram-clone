@@ -50,21 +50,13 @@
         </div>
         <div class="col-10 offset-md-1">
             <div class="row">
+              @foreach ($posts as $post)
+                
                 <div class="col-md-4 text-center mt-3">
-                    <img src="uploads/about-1.jpg" width="320px" height="320px" alt="">
+                    <img src="uploads/posts/{{ $post->post_image }}" width="320px" height="320px" alt="">
                 </div>
-                <div class="col-md-4 text-center mt-3">
-                    <img src="uploads/about-1.jpg" width="320px" height="320px" alt="">
-                </div>
-                <div class="col-md-4 text-center mt-3">
-                    <img src="uploads/about-1.jpg" width="320px" height="320px" alt="">
-                </div>
-                <div class="col-md-4 text-center mt-3">
-                    <img src="uploads/about-1.jpg" width="320px" height="320px" alt="">
-                </div>
-                <div class="col-md-4 text-center mt-3">
-                    <img src="uploads/about-1.jpg" width="320px" height="320px" alt="">
-                </div>
+
+              @endforeach
             </div>
         </div>
    </div>

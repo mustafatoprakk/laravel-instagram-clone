@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,8 +25,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get("/new-post",function(){
-    return "about";
-})->name("new-post");
-
-Route::get("/profile",[ProfileController::class,"index"])->name("profile");
+Route::get("/new-post", [PostController::class, "index"])->name("new-post");
+Route::post("/new-post", [PostController::class, "store"])->name("create-post");
+Route::get("/profile", [ProfileController::class, "index"])->name("profile");

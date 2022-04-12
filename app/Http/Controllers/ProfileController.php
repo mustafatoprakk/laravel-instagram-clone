@@ -69,9 +69,23 @@ class ProfileController extends Controller
      * @param  \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        //
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->job = $request->job;
+        $user->about = $request->about;
+
+        if ($request->hasFile("profile_image")) {
+            $profile_image = $request->file("profile_image");
+            $extention = $profile_image->getClientOriginalExtension();
+            $imageName = time() . "." . $extention;
+            $profile_image->move("uploads/profiles/", $imageName);
+            $user->profile_image = $imageName;
+        }
+        $user->update();
+
+        return redirect()->back()->with("message", "Profile updated successfully!");
     }
 
     /**

@@ -28,3 +28,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get("/new-post", [PostController::class, "index"])->name("new-post");
 Route::post("/new-post", [PostController::class, "store"])->name("create-post");
 Route::get("/profile", [ProfileController::class, "index"])->name("profile");
+Route::post("/profile-update", [ProfileController::class, "update"])->name("profile-update");

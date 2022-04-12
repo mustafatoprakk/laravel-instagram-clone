@@ -10,7 +10,7 @@
 <div class="container mt-5">
    <div class="row my-5 col-md-6 offset-md-3">
     <div class="col-md-4 text-center">
-            <img src="uploads/about-1.jpg" style="width: 150px; height: 150px" class="rounded-circle mx-auto d-block" alt="...">
+            <img src="uploads/profiles/{{ Auth::user()->profile_image }}" style="width: 150px; height: 150px" class="rounded-circle mx-auto d-block" alt="...">
          
     </div>
     <div class="col-md-8 ps-5">
@@ -29,15 +29,38 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <h5 class="modal-title" id="staticBackdropLabel">User Profile</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              ...
+
+            @if(Session::has("message"))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{Session::get("message")}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
+            @endif
+
+            <div class="modal-body">
+              <form action="{{ route('profile-update') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                <div class="mb-3">
+                    <input type="text" class="form-control fs-5" name="name" id="name" placeholder="name" value="{{ Auth::user()->name }}">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control fs-5" name="job" id="job" placeholder="Job" value="{{ Auth::user()->job }}">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control fs-5" name="about" id="about" placeholder="about" value="{{ Auth::user()->about }}">
+                </div>
+                <div class="mb-3">
+                    <input type="file" class="form-control fs-5" name="profile_image" id="profile_image">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Update Profile</button>
+                </div>
+            </form>
             </div>
           </div>
         </div>

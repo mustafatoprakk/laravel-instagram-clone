@@ -20,7 +20,8 @@
             </div>
             <span class="fw-normal">{{ Auth::user()->job }}</span><br>
             <span class="fw-normal">{{ Auth::user()->about }}</span><br>
-            <span class="fw-normal">{{ Auth::user()->email }}</span>
+            <span class="fw-normal">{{ Auth::user()->email }}</span><br>
+            <span class="fw-normal">{{ \Carbon\Carbon::parse(Auth::user()->age)->diff(\Carbon\Carbon::now())->format('I am %y years old') }}</span><br>
     </div>
    </div>
 
@@ -53,6 +54,9 @@
                 <div class="mb-3">
                     <input type="text" class="form-control fs-5" name="about" id="about" placeholder="about" value="{{ Auth::user()->about }}">
                 </div>
+                <div class="mb-3">
+                  <input type="date" class="form-control fs-5" name="age" id="age" placeholder="age" value="{{ Auth::user()->age }}">
+              </div>
                 <div class="mb-3">
                     <input type="file" class="form-control fs-5" name="profile_image" id="profile_image">
                 </div>

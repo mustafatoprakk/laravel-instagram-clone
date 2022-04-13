@@ -75,6 +75,7 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->job = $request->job;
         $user->about = $request->about;
+        $user->age=$request->age;
 
         if ($request->hasFile("profile_image")) {
             $profile_image = $request->file("profile_image");

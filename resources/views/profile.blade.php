@@ -74,11 +74,13 @@
         <div class="col-10 offset-md-1">
             <div class="row">
               @foreach ($posts as $post)
-                
+                @if ($post->user_id ==  Auth::user()->id)
+
                 <div class="col-md-4 text-center mt-3">
                     <img src="uploads/posts/{{ $post->post_image }}" width="320px" height="320px" alt="">
                 </div>
-
+                
+                @endif
               @endforeach
             </div>
         </div>

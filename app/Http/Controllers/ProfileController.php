@@ -46,9 +46,10 @@ class ProfileController extends Controller
      * @param  \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $posts = Post::find($id);
+        return view("profile-detail", compact("posts"));
     }
 
     /**
@@ -75,7 +76,7 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->job = $request->job;
         $user->about = $request->about;
-        $user->age=$request->age;
+        $user->age = $request->age;
 
         if ($request->hasFile("profile_image")) {
             $profile_image = $request->file("profile_image");

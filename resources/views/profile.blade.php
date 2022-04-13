@@ -80,9 +80,13 @@
               @foreach ($posts as $post)
                 @if ($post->user_id ==  Auth::user()->id)
 
+                
                 <div class="col-md-4 text-center mt-3">
+                  <a href="{{ route('profile-detail',$post->id) }}" class="text-decoration-none">
                     <img src="uploads/posts/{{ $post->post_image }}" width="320px" height="320px" alt="">
+                  </a>
                 </div>
+                
                 
                 @endif
               @endforeach

@@ -83,9 +83,23 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request)
     {
-        //
+        $post = Post::find($request->id);
+        $post->title = $request->title;
+        $post->description = $request->description;
+
+        if ($request->hasFile("post_image")) {
+            $post_image = $request->file("post_image");
+            $extention = $post_image->getClientOriginalExtension();
+            $imageName = time() . "." . $extention;
+            $post_image->move("uploads/posts/", $imageName);
+            $post->post_image = $imageName;
+        }
+
+        $post->update();
+
+        return redirect()->back()->with("message", "Profile updated successfully!");
     }
 
     /**

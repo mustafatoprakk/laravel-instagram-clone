@@ -27,5 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get("/new-post", [PostController::class, "index"])->name("new-post");
 Route::post("/new-post", [PostController::class, "store"])->name("create-post");
+Route::post("/post-update", [PostController::class, "update"])->name("post-update");
 Route::get("/profile", [ProfileController::class, "index"])->name("profile");
 Route::post("/profile-update", [ProfileController::class, "update"])->name("profile-update");
+Route::get("/profile-detail/{id}", [ProfileController::class, "show"])->name("profile-detail");

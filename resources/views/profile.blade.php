@@ -18,8 +18,8 @@
                 <span class="fw-bolder">{{ Auth::user()->name }}</span>
                 <button type="button" class="btn btn-sm btn-outline-secondary ms-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit Profile</button>
             </div>
-            <span class="fw-normal">Web Developer</span><br>
-            <span class="fw-normal">I am a student</span><br>
+            <span class="fw-normal">{{ Auth::user()->job }}</span><br>
+            <span class="fw-normal">{{ Auth::user()->about }}</span><br>
             <span class="fw-normal">{{ Auth::user()->email }}</span>
     </div>
    </div>

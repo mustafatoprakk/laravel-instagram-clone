@@ -10,7 +10,7 @@
             <div class="card mt-4">
                 <div class="row mt-3 ms-2">
                     <div class="col-md-1">
-                        <img src="uploads/profiles/1649756498.jpeg" class="rounded-circle" width="40px" height="40px" alt="profile">
+                        <img src="uploads/profiles/{{ $post->profile_image }}" class="rounded-circle" width="40px" height="40px" alt="profile">
                     </div>
                     <div class="col-md mt-2">
                         <span class="fw-bolder">{{ $post->user_name }}</span>

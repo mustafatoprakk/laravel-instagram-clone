@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("user_name", 250);
             $table->string("title", 250)->nullable();
             $table->text("description")->nullable();
+            $table->text("profile_image", 250)->nullable();
             $table->text("post_image", 250)->nullable();
             $table->timestamps();
         });

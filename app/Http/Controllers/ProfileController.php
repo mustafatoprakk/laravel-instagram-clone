@@ -49,7 +49,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         $posts = Post::find($id);
-        return view("profile-detail", compact("posts"));
+        return view("post-detail", compact("posts"));
     }
 
     /**

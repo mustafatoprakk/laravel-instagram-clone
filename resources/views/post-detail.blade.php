@@ -27,7 +27,7 @@
                         <input type="file" class="form-control fs-5" name="post_image" id="post_image">
                     </div>
                       <button type="submit" class="btn btn-success">Update Post</button>
-                      <button type="button" class="btn btn-danger">Delete Post</button>
+                      <a href="{{ route('post-delete', $posts->id) }}" class="btn btn-danger">Delete Post</a>
                 </form>
             </div>
         </div>

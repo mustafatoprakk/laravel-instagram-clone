@@ -26,6 +26,10 @@ class User extends Authenticatable
         'age',
     ];
 
+    public function posts(){
+        return $this->belongsToMany(Post::class, "users_post", "post_id", "user_id")->withTimestamps();
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

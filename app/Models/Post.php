@@ -9,6 +9,11 @@ class Post extends Model
 {
     use HasFactory;
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, "users_post", "post_id", "user_id")->withTimestamps();
+    }
+
     protected $fillable = [
         'user_name',
         'title',
@@ -17,7 +22,7 @@ class Post extends Model
         'post_image',
     ];
 
-    protected $hidden=[
+    protected $hidden = [
         "user_id",
     ];
 }
